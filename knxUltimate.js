@@ -38,7 +38,7 @@ module.exports = function (RED) {
                 return;
             } else {
             
-                // Topic must be in formar x/x/x
+                // Topic must be in format x/x/x
                 if (node.topic.split("\/").length < 3) {
                     node.setNodeStatus({ fill: "red", shape: "dot", text: "Wrong group address format.",payload: "", GA: node.topic, dpt:"", devicename:""})
                     return;
@@ -49,7 +49,7 @@ module.exports = function (RED) {
         node.on("input", function (msg) {
             if (typeof msg === "undefined") return;
 
-            // 01/02/2020 Dinamic change of the KNX Gateway IP, Port and Physical Address
+            // 01/02/2020 Dynamic change of the KNX Gateway IP, Port and Physical Address
             // DEPRECATED, USE THE WATCHDOG INSTEAD
             // This new thing has been requested by proServ RealKNX staff.
             if (msg.hasOwnProperty("setGatewayConfig")) {
