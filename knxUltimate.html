@@ -16,7 +16,8 @@
             name: { value: "" },
             outputtype: { value: "write" },
             outputRBE: { value: true },
-            inputRBE: { value: false }
+            inputRBE: { value: false },
+            msgtopic: { value: "" }
         },
         inputs: 1,
         outputs: 1,
@@ -71,6 +72,7 @@
                     $("#node-input-inputRBE").prop('checked', false)
                     $("#divnotifyreadrequestautoreact").hide();
                     $("#helpallga").show();
+                    $("#node-input-msgtopic").hide()
                     if ($("#helpallga").html==""){
                         // There is a ETS csv file, show the init read option
                         $("#divNode-input-initialread").show()
@@ -91,6 +93,7 @@
                         $("#divnotifyreadrequestautoreact").hide();
                     }
                     $("#helpallga").hide()
+                    $("#node-input-msgtopic").show()
                     $("#divNode-input-initialread").show();
                 }
             })
@@ -172,6 +175,12 @@
                 ) {
                     $("#advancedOptionsAccordion").accordion({ active: 0 });
             }
+            $("#messageOptionsAccordion").accordion({
+                header:"h3",
+                heightStyle: "content",
+                collapsible: true,
+                active: false
+            });
             // *****************************
             
 
@@ -303,6 +312,16 @@
                 </div>
             </p>
         </div>
+    <div id="messageOptionsAccordion">
+        <h3>Output message options</h3>
+        <div>
+        <p>
+            <div class="form-row">
+                <label for="node-input-msgtopic"><i class="fa fa-tag"></i> Topic </label>
+                <input type="text" id="node-input-msgtopic" placeholder="">
+            </div>
+        </p>
+        </div>
     </div>        
 </script>
 
@@ -370,6 +389,12 @@
                             If the value is unknown/not initialized, it sends a default value you've selected in the text box.
                         </dd>
                 </dd>
+            </dl>
+            <h3>OUTPUT MESSAGE OPTIONS</h3>
+
+            <dl class="message-properties">
+                    <dt>Topic</dt>
+                    <dd>This option is only available when not in Universal mode. The text given here will be used as the msg.topic attribute</dd>
             </dl>
         </p>
    

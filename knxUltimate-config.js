@@ -341,6 +341,9 @@ module.exports = (RED) => {
                                         msg.previouspayload = typeof input.currentPayload !== "undefined" ? input.currentPayload : ""; // 24/01/2020 Added previous payload
                                         input.currentPayload = msg.payload;// Set the current value for the RBE input
                                         input.setNodeStatus({ fill: "green", shape: "dot", text: "", payload: msg.payload, GA: input.topic, dpt: input.dpt, devicename: "" });
+                                        if (input.msgtopic != "") {
+                                            msg.topic = input.msgtopic;
+                                        }
                                         input.send(msg);
                                     };
                                 };
@@ -388,6 +391,9 @@ module.exports = (RED) => {
                                         msg.previouspayload = typeof input.currentPayload !== "undefined" ? input.currentPayload : ""; // 24/01/2020 Added previous payload
                                         input.currentPayload = msg.payload; // Set the current value for the RBE input
                                         input.setNodeStatus({ fill: "blue", shape: "dot", text: "", payload: msg.payload, GA: input.topic, dpt: msg.knx.dpt, devicename: msg.devicename });
+                                        if (input.msgtopic != "") {
+                                            msg.topic = input.msgtopic;
+                                        }
                                         input.send(msg)
                                     };
                                 };
@@ -446,6 +452,9 @@ module.exports = (RED) => {
                                         } else {
                                             input.setNodeStatus({ fill: "grey", shape: "dot", text: "Read", payload: msg.payload, GA: input.topic, dpt: msg.knx.dpt, devicename: "" });
                                         };
+                                        if (input.msgtopic != "") {
+                                            msg.topic = input.msgtopic;
+                                        }
                                         input.send(msg);
                                     };
                                 };
